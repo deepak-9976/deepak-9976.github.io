@@ -139,11 +139,11 @@ Submit Message
 
 <ion-icon name="location"></ion-icon>
 Address
-20, London, United Kingdom
+2 kindlewood drive, Nottingham, United Kingdom
 
 <ion-icon name="mail"></ion-icon>
 Email
-hello@ethan.com
+deepak9976@gmail.com
 
 <ion-icon name="call"></ion-icon>
 Phone
