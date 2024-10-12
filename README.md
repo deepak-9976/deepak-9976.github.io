@@ -1,33 +1,54 @@
-![A preview](https://github.com/deepak-9976/deepak-9976.github.io/blob/main/images/banner.png)
+<div align="center">
+  
+  ![GitHub repo size](https://img.shields.io/github/repo-size/codewithsadee/portfolio)
+  ![GitHub stars](https://img.shields.io/github/stars/codewithsadee/portfolio?style=social)
+  ![GitHub forks](https://img.shields.io/github/forks/codewithsadee/portfolio?style=social)
+[![Twitter Follow](https://img.shields.io/twitter/follow/codewithsadee_?style=social)](https://twitter.com/intent/follow?screen_name=codewithsadee_)
+  [![YouTube Video Views](https://img.shields.io/youtube/views/SAu7e09vXoQ?style=social)](https://youtu.be/SAu7e09vXoQ)
 
-# Personal Portfolio 
-> [deepak-9976.github.io/](https://deepak-9976.github.io/)
+  <br />
+  <br />
 
-- **Framework**: [Angular14](https://angular.io/)
-- **Styling**: [SCSS](https://sass-lang.com/)
-- **Theme**: [Angular Material](https://material.angular.io/)
+  <h2 align="center">Personal Portfolio Website</h2>
 
-## Project Overview
+  Fully responsive personal portfolio website, <br />Responsive for all devices, built using HTML, CSS, and JavaScript.
 
-## Features 📋
-⚡️ Fully Responsive\
-⚡️ Valid HTML5 & CSS3\
-⚡️ Angular Material animations\
-⚡️ Flex Layout Usage\
-⚡️ Easy to modify\
+  <a href="https://codewithsadee.github.io/portfolio/"><strong>➥ Live Demo</strong></a>
 
-## Sections 📚
-✔️ About\
-✔️ ShowCases : Clients Projects, Icons, Logos \
-✔️ Expertise \
-✔️ Tech Stack \
-✔️ Contact \
+</div>
 
-## Running Locally
+<br />
+
+### Demo Screeshots
+
+![Portfolio Desktop Demo](./readme-images/desktop.png "Desktop Demo")
+
+### Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+* [Git](https://git-scm.com/downloads "Download Git") must be installed on your operating system.
+
+### Run Locally
+
+To run **Portfolio** locally, run this command on your git bash:
+
+Linux and macOS:
 
 ```bash
-$ git clone https://github.com/deepak-9976/deepak-9976.github.io.git
-$ cd braydoncoyer.dev
-$ npm install
-$ ng serve
+sudo git clone https://github.com/codewithsadee/portfolio.git
 ```
+
+Windows:
+
+```bash
+git clone https://github.com/codewithsadee/portfolio.git
+```
+
+### Contact
+
+If you want to contact with me you can reach me at [Twitter](https://www.twitter.com/codewithsadee).
+
+### License
+
+This project is **free to use** and does not contains any license.
