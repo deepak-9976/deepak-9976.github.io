@@ -1,10 +1,10 @@
-Ethan Ward - Web Developer from New York
+Deepak Sharma - DevOps Architect from Nottingham
 
 
 
 #---------- HEADER ----------#
 
-Ethan Ward
+ee;
 
 aria-label = Toggle Menu
 
@@ -24,9 +24,9 @@ Download CV
 
 #---------- HERO ----------#
 
-alt = Ethan's Photo
+alt = Deepak's Photo
 
-12
+24
 Years of Success
 
 800+
@@ -34,13 +34,13 @@ Projects Completed
 
 <ion-icon name="trophy"></ion-icon>
 
-alt = I'm developer from New York
+alt = I'm DevOps Architect from Nottingham
 
 Hello I'm
 
-Ethan Ward
+ee;
 
-Web Developer from New York
+DevOps Architect from Nottingham
 
 Adipisicing elit. Neque nulla voluptatum eos repellat deserunt nesciunt tempore porro totam.
 
@@ -103,25 +103,26 @@ I Develop Skills Regularly
 
 Dliquip ex ea commo do conse namber onequa ute irure dolor in reprehen derit in voluptate
 
-CSS
+Kubernetes
 95%
 
-React
-75%
+Jenkins
+95%
 
-MongoDB
+Terraform
 90%
 
-Python
-70%
+Ansible
+90%
 
-PHP
+Java
 80%
 
 JavaScript
 75%
 
-
+Angular
+75%
 
 #---------- CONTACT ----------#
 
