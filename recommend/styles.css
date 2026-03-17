@@ -1,0 +1,163 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f0f2f5;
+  color: #1a1a2e;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Hero (Welcome) ── */
+.hero {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+.hero h1 { font-size: 2.8rem; color: #4f46e5; margin-bottom: .5rem; }
+.hero p  { font-size: 1.1rem; color: #555; margin-bottom: 2rem; }
+
+/* ── Auth Card ── */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.08);
+}
+.card h2 { margin-bottom: 1.5rem; color: #4f46e5; }
+.card label { display: block; font-size: .85rem; font-weight: 600; margin: .8rem 0 .3rem; }
+.card input { width: 100%; padding: .6rem .8rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: .95rem; }
+.card hr { margin: 1.2rem 0; border: none; border-top: 1px solid #e5e7eb; }
+.card .center { text-align: center; margin-top: 1rem; font-size: .9rem; }
+
+/* ── App Layout ── */
+body.app-layout {
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.sidebar {
+  width: 220px;
+  min-height: 100vh;
+  background: #1e1b4b;
+  color: #c7d2fe;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  flex-shrink: 0;
+}
+.sidebar .logo { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 2rem; }
+.sidebar ul { list-style: none; flex: 1; }
+.sidebar ul li { margin-bottom: .3rem; }
+.sidebar ul a {
+  display: block; padding: .55rem .8rem; border-radius: 8px;
+  color: #c7d2fe; text-decoration: none; font-size: .9rem;
+  transition: background .15s;
+}
+.sidebar ul a:hover, .sidebar ul a.active {
+  background: #4f46e5; color: #fff;
+}
+.sidebar .logout { margin-top: 1rem; text-align: center; }
+
+.content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+.content h2 { font-size: 1.6rem; margin-bottom: 1.5rem; color: #1e1b4b; }
+.content h3 { font-size: 1.1rem; margin: 1.5rem 0 .8rem; color: #374151; }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-block; padding: .55rem 1.2rem; border-radius: 8px;
+  font-size: .9rem; font-weight: 600; cursor: pointer;
+  border: none; text-decoration: none; transition: opacity .15s;
+}
+.btn:hover { opacity: .85; }
+.btn-primary  { background: #4f46e5; color: #fff; }
+.btn-secondary{ background: #e5e7eb; color: #374151; }
+.btn-danger   { background: #ef4444; color: #fff; }
+.btn-google   { background: #fff; border: 1px solid #d1d5db; color: #374151; display: flex; align-items: center; gap: .5rem; justify-content: center; }
+.full-width   { width: 100%; margin-top: .8rem; }
+
+/* ── Tables ── */
+table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+th { background: #f9fafb; padding: .75rem 1rem; text-align: left; font-size: .8rem; text-transform: uppercase; color: #6b7280; }
+td { padding: .75rem 1rem; border-top: 1px solid #f3f4f6; font-size: .9rem; }
+td.actions a { margin-right: .5rem; color: #4f46e5; text-decoration: none; font-size: .85rem; }
+td.actions a.danger { color: #ef4444; }
+
+/* ── Badges ── */
+.badge { padding: .2rem .6rem; border-radius: 999px; font-size: .75rem; font-weight: 600; }
+.badge.green  { background: #d1fae5; color: #065f46; }
+.badge.yellow { background: #fef3c7; color: #92400e; }
+.badge.blue   { background: #dbeafe; color: #1e40af; }
+
+/* ── Stats ── */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px,1fr)); gap: 1rem; margin-bottom: 2rem; }
+.stat-card { background: #fff; border-radius: 10px; padding: 1.2rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+.stat-num { display: block; font-size: 1.8rem; font-weight: 700; color: #4f46e5; }
+.stat-label { font-size: .8rem; color: #6b7280; }
+
+/* ── Page Header ── */
+.page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+
+/* ── Filter Input ── */
+.filter-input { padding: .55rem .8rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: .9rem; width: 100%; max-width: 320px; margin-bottom: 1rem; }
+.filter-input.inline { margin-bottom: 0; }
+
+/* ── Product Grid ── */
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 1.2rem; }
+.product-card { background: #fff; border-radius: 10px; padding: 1.5rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+.product-img { font-size: 2.5rem; margin-bottom: .8rem; }
+.product-card h4 { margin-bottom: .4rem; }
+.product-card p { font-size: .85rem; color: #6b7280; margin-bottom: .6rem; }
+.stars { color: #f59e0b; margin-bottom: .8rem; }
+
+/* ── Calculators ── */
+.calc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 1.2rem; }
+.calc-card { background: #fff; border-radius: 10px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+.calc-card h4 { margin-bottom: 1rem; color: #4f46e5; }
+.calc-card label { display: block; font-size: .8rem; font-weight: 600; margin: .6rem 0 .2rem; }
+.calc-card input { width: 100%; padding: .5rem .7rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: .9rem; }
+.calc-card .btn { margin-top: .8rem; }
+.result { margin-top: .8rem; font-size: .9rem; color: #374151; }
+
+/* ── Plans ── */
+.plan-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 1.5rem; max-width: 600px; }
+.plan-card { background: #fff; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,.06); position: relative; }
+.plan-card.featured { border: 2px solid #4f46e5; }
+.badge-top { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #4f46e5; color: #fff; padding: .2rem .8rem; border-radius: 999px; font-size: .75rem; font-weight: 700; }
+.plan-card h3 { font-size: 1.2rem; margin-bottom: .5rem; }
+.price { font-size: 2rem; font-weight: 700; color: #4f46e5; margin-bottom: 1rem; }
+.price span { font-size: 1rem; color: #6b7280; }
+.plan-card ul { list-style: none; margin-bottom: 1.5rem; }
+.plan-card ul li { padding: .3rem 0; font-size: .9rem; color: #374151; }
+
+/* ── Blockchain ── */
+.wallet-status { display: flex; align-items: center; gap: .8rem; background: #fff; padding: 1rem 1.5rem; border-radius: 10px; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot.disconnected { background: #ef4444; }
+.dot.connected    { background: #10b981; }
+.op-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 1.2rem; }
+.op-card { background: #fff; border-radius: 10px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+.op-card h4 { margin-bottom: .8rem; color: #4f46e5; }
+.op-card input { width: 100%; padding: .5rem .7rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: .9rem; margin-bottom: .5rem; }
+.op-card .btn { margin-top: .3rem; }
+pre.output { margin-top: .8rem; background: #f9fafb; padding: .6rem; border-radius: 6px; font-size: .8rem; color: #374151; }
+
+/* ── Search ── */
+.search-bar { display: flex; gap: .8rem; margin-bottom: 1.5rem; }
+.search-bar .filter-input { flex: 1; max-width: none; margin-bottom: 0; }
+.muted { color: #9ca3af; font-size: .9rem; }
+
+/* ── Footer ── */
+footer { margin-top: 2rem; color: #9ca3af; font-size: .85rem; }
+
+/* ── Btn group ── */
+.btn-group { display: flex; gap: 1rem; justify-content: center; }

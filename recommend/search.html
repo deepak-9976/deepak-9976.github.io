@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search - RecommendationEngine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-layout">
+  <nav class="sidebar">
+    <div class="logo">RecEngine</div>
+    <ul>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="customers.html">Customers</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="search.html" class="active">Search</a></li>
+      <li><a href="stripe.html">Subscription</a></li>
+      <li><a href="metamask.html">Blockchain</a></li>
+    </ul>
+    <a href="index.html" class="btn btn-secondary logout">Log Out</a>
+  </nav>
+  <main class="content">
+    <h2>Search</h2>
+    <div class="search-bar">
+      <input type="text" placeholder="Search customers, projects, products..." class="filter-input">
+      <button class="btn btn-primary">Search</button>
+    </div>
+    <div class="search-results">
+      <h3>Results</h3>
+      <p class="muted">Enter a query above to search across all entities.</p>
+      <table style="display:none" id="results-table">
+        <thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Link</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+</body>
+</html>

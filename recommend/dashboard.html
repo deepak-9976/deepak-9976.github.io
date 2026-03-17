@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - RecommendationEngine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-layout">
+  <nav class="sidebar">
+    <div class="logo">RecEngine</div>
+    <ul>
+      <li><a href="dashboard.html" class="active">Dashboard</a></li>
+      <li><a href="customers.html">Customers</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="search.html">Search</a></li>
+      <li><a href="stripe.html">Subscription</a></li>
+      <li><a href="metamask.html">Blockchain</a></li>
+    </ul>
+    <a href="index.html" class="btn btn-secondary logout">Log Out</a>
+  </nav>
+  <main class="content">
+    <h2>Dashboard</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><span class="stat-num">142</span><span class="stat-label">Customers</span></div>
+      <div class="stat-card"><span class="stat-num">38</span><span class="stat-label">Projects</span></div>
+      <div class="stat-card"><span class="stat-num">256</span><span class="stat-label">Products</span></div>
+      <div class="stat-card"><span class="stat-num">Active</span><span class="stat-label">Subscription</span></div>
+    </div>
+    <h3>Recent Projects</h3>
+    <table>
+      <thead><tr><th>Name</th><th>Status</th><th>Phase</th><th>Actions</th></tr></thead>
+      <tbody>
+        <tr><td>Downtown Office Reno</td><td><span class="badge green">Active</span></td><td>Planning</td><td><a href="projects.html">View</a></td></tr>
+        <tr><td>Riverside Apartments</td><td><span class="badge yellow">Pending</span></td><td>Design</td><td><a href="projects.html">View</a></td></tr>
+        <tr><td>Harbor Warehouse</td><td><span class="badge blue">Complete</span></td><td>Closed</td><td><a href="projects.html">View</a></td></tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

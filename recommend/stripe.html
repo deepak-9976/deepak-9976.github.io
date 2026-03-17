@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscription - RecommendationEngine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-layout">
+  <nav class="sidebar">
+    <div class="logo">RecEngine</div>
+    <ul>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="customers.html">Customers</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="search.html">Search</a></li>
+      <li><a href="stripe.html" class="active">Subscription</a></li>
+      <li><a href="metamask.html">Blockchain</a></li>
+    </ul>
+    <a href="index.html" class="btn btn-secondary logout">Log Out</a>
+  </nav>
+  <main class="content">
+    <h2>Choose a Plan</h2>
+    <div class="plan-grid">
+      <div class="plan-card">
+        <h3>Monthly</h3>
+        <div class="price">$29<span>/mo</span></div>
+        <ul>
+          <li>✓ Unlimited customers</li>
+          <li>✓ Up to 50 projects</li>
+          <li>✓ Product catalog access</li>
+          <li>✓ Email support</li>
+        </ul>
+        <button class="btn btn-primary full-width">Subscribe Monthly</button>
+      </div>
+      <div class="plan-card featured">
+        <div class="badge-top">Best Value</div>
+        <h3>Yearly</h3>
+        <div class="price">$249<span>/yr</span></div>
+        <ul>
+          <li>✓ Everything in Monthly</li>
+          <li>✓ Unlimited projects</li>
+          <li>✓ Blockchain integration</li>
+          <li>✓ Priority support</li>
+        </ul>
+        <button class="btn btn-primary full-width">Subscribe Yearly</button>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

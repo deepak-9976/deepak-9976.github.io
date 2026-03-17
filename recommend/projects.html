@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - RecommendationEngine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-layout">
+  <nav class="sidebar">
+    <div class="logo">RecEngine</div>
+    <ul>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="customers.html">Customers</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="search.html">Search</a></li>
+      <li><a href="stripe.html">Subscription</a></li>
+      <li><a href="metamask.html">Blockchain</a></li>
+    </ul>
+    <a href="index.html" class="btn btn-secondary logout">Log Out</a>
+  </nav>
+  <main class="content">
+    <div class="page-header">
+      <h2>Projects</h2>
+      <button class="btn btn-primary">+ New Project</button>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Project Name</th><th>Owner</th><th>Status</th><th>Phase</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Downtown Office Reno</td><td>Alice Johnson</td>
+          <td><span class="badge green">Active</span></td><td>Planning</td>
+          <td class="actions"><a href="#">Details</a> <a href="#">IRR</a> <a href="#">NOI</a> <a href="#">Cap Rate</a></td>
+        </tr>
+        <tr>
+          <td>Riverside Apartments</td><td>Bob Martinez</td>
+          <td><span class="badge yellow">Pending</span></td><td>Design</td>
+          <td class="actions"><a href="#">Details</a> <a href="#">IRR</a> <a href="#">NOI</a> <a href="#">Cap Rate</a></td>
+        </tr>
+        <tr>
+          <td>Harbor Warehouse</td><td>Carol Smith</td>
+          <td><span class="badge blue">Complete</span></td><td>Closed</td>
+          <td class="actions"><a href="#">Details</a> <a href="#">IRR</a> <a href="#">NOI</a> <a href="#">Cap Rate</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Financial Calculators</h3>
+    <div class="calc-grid">
+      <div class="calc-card">
+        <h4>IRR Calculator</h4>
+        <label>Initial Investment ($)</label>
+        <input type="number" placeholder="-100000">
+        <label>Cash Flows (comma-separated)</label>
+        <input type="text" placeholder="20000, 30000, 40000, 50000">
+        <button class="btn btn-primary">Calculate IRR</button>
+        <p class="result">IRR: <strong>—</strong></p>
+      </div>
+      <div class="calc-card">
+        <h4>NOI Calculator</h4>
+        <label>Gross Income ($)</label>
+        <input type="number" placeholder="120000">
+        <label>Operating Expenses ($)</label>
+        <input type="number" placeholder="45000">
+        <button class="btn btn-primary">Calculate NOI</button>
+        <p class="result">NOI: <strong>—</strong></p>
+      </div>
+      <div class="calc-card">
+        <h4>Cap Rate Calculator</h4>
+        <label>NOI ($)</label>
+        <input type="number" placeholder="75000">
+        <label>Property Value ($)</label>
+        <input type="number" placeholder="1000000">
+        <button class="btn btn-primary">Calculate Cap Rate</button>
+        <p class="result">Cap Rate: <strong>—</strong></p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

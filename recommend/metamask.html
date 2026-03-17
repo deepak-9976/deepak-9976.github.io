@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blockchain - RecommendationEngine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-layout">
+  <nav class="sidebar">
+    <div class="logo">RecEngine</div>
+    <ul>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="customers.html">Customers</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="search.html">Search</a></li>
+      <li><a href="stripe.html">Subscription</a></li>
+      <li><a href="metamask.html" class="active">Blockchain</a></li>
+    </ul>
+    <a href="index.html" class="btn btn-secondary logout">Log Out</a>
+  </nav>
+  <main class="content">
+    <h2>Blockchain Gateway</h2>
+    <div class="wallet-status">
+      <span class="dot disconnected"></span>
+      <span id="wallet-label">Wallet not connected</span>
+      <button class="btn btn-primary" id="connect-btn">Connect MetaMask</button>
+    </div>
+
+    <div class="metamask-ops" id="ops" style="opacity:0.4;pointer-events:none">
+      <h3>Smart Contract Operations</h3>
+      <div class="op-grid">
+        <div class="op-card">
+          <h4>Read Record</h4>
+          <input type="text" placeholder="Record key">
+          <button class="btn btn-primary">Read</button>
+          <pre class="output">—</pre>
+        </div>
+        <div class="op-card">
+          <h4>Create / Update Record</h4>
+          <input type="text" placeholder="Key">
+          <input type="text" placeholder="Value">
+          <button class="btn btn-primary">Write</button>
+        </div>
+        <div class="op-card">
+          <h4>Delete Record</h4>
+          <input type="text" placeholder="Record key">
+          <button class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script>
+    document.getElementById('connect-btn').addEventListener('click', function() {
+      document.querySelector('.dot').classList.replace('disconnected','connected');
+      document.getElementById('wallet-label').textContent = '0xAbCd...1234 connected';
+      this.textContent = 'Disconnect';
+      document.getElementById('ops').style.opacity = '1';
+      document.getElementById('ops').style.pointerEvents = 'auto';
+    });
+  </script>
+</body>
+</html>

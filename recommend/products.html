@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products - RecommendationEngine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-layout">
+  <nav class="sidebar">
+    <div class="logo">RecEngine</div>
+    <ul>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="customers.html">Customers</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="products.html" class="active">Products</a></li>
+      <li><a href="search.html">Search</a></li>
+      <li><a href="stripe.html">Subscription</a></li>
+      <li><a href="metamask.html">Blockchain</a></li>
+    </ul>
+    <a href="index.html" class="btn btn-secondary logout">Log Out</a>
+  </nav>
+  <main class="content">
+    <div class="page-header">
+      <h2>Products</h2>
+      <input type="text" placeholder="Filter by name..." class="filter-input inline">
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-img">📦</div>
+        <h4>Analytics Pro</h4>
+        <p>Advanced data analytics and reporting suite.</p>
+        <div class="stars">★★★★☆</div>
+        <a href="#" class="btn btn-primary">View Details</a>
+      </div>
+      <div class="product-card">
+        <div class="product-img">🏗️</div>
+        <h4>Project Tracker</h4>
+        <p>End-to-end project lifecycle management.</p>
+        <div class="stars">★★★★★</div>
+        <a href="#" class="btn btn-primary">View Details</a>
+      </div>
+      <div class="product-card">
+        <div class="product-img">🔗</div>
+        <h4>Blockchain Vault</h4>
+        <p>Secure on-chain document and record storage.</p>
+        <div class="stars">★★★☆☆</div>
+        <a href="#" class="btn btn-primary">View Details</a>
+      </div>
+      <div class="product-card">
+        <div class="product-img">💳</div>
+        <h4>Payment Gateway</h4>
+        <p>Stripe-powered subscription billing.</p>
+        <div class="stars">★★★★☆</div>
+        <a href="#" class="btn btn-primary">View Details</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

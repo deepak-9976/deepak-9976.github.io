@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customers - RecommendationEngine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-layout">
+  <nav class="sidebar">
+    <div class="logo">RecEngine</div>
+    <ul>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="customers.html" class="active">Customers</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="search.html">Search</a></li>
+      <li><a href="stripe.html">Subscription</a></li>
+      <li><a href="metamask.html">Blockchain</a></li>
+    </ul>
+    <a href="index.html" class="btn btn-secondary logout">Log Out</a>
+  </nav>
+  <main class="content">
+    <div class="page-header">
+      <h2>Customers</h2>
+      <button class="btn btn-primary">+ Add Customer</button>
+    </div>
+    <input type="text" placeholder="Filter customers..." class="filter-input">
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Email</th><th>Phone</th><th>City</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Alice Johnson</td><td>alice@example.com</td><td>555-0101</td><td>New York</td>
+          <td class="actions"><a href="#">View</a> <a href="#">Edit</a> <a href="#" class="danger">Delete</a></td>
+        </tr>
+        <tr>
+          <td>Bob Martinez</td><td>bob@example.com</td><td>555-0102</td><td>Chicago</td>
+          <td class="actions"><a href="#">View</a> <a href="#">Edit</a> <a href="#" class="danger">Delete</a></td>
+        </tr>
+        <tr>
+          <td>Carol Smith</td><td>carol@example.com</td><td>555-0103</td><td>Austin</td>
+          <td class="actions"><a href="#">View</a> <a href="#">Edit</a> <a href="#" class="danger">Delete</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>
