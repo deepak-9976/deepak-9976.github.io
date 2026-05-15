@@ -1056,3 +1056,111 @@ textarea.contact-input {
   .footer-list { margin-inline: 0; }
 
 }
+
+/*-----------------------------------*\
+  #CHATBOT
+\*-----------------------------------*/
+
+#chatbot-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#chat-toggle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: hsl(196, 84%, 63%);
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px hsla(0,0%,0%,.3);
+  transition: transform .2s;
+}
+#chat-toggle:hover { transform: scale(1.1); }
+
+#chat-window {
+  position: absolute;
+  bottom: 68px;
+  right: 0;
+  width: 300px;
+  background: hsl(243, 23%, 18%);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px hsla(0,0%,0%,.4);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+#chat-header {
+  background: hsl(196, 84%, 63%);
+  color: #fff;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: .9rem;
+}
+#chat-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+#chat-messages {
+  padding: 12px;
+  max-height: 240px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chat-msg {
+  max-width: 85%;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: .85rem;
+  line-height: 1.4;
+}
+.chat-msg.bot {
+  background: hsl(225, 24%, 27%);
+  color: hsl(240, 10%, 85%);
+  align-self: flex-start;
+  border-bottom-left-radius: 2px;
+}
+.chat-msg.bot a { color: hsl(196, 84%, 63%); }
+.chat-msg.user {
+  background: hsl(196, 84%, 63%);
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
+}
+
+#chat-options {
+  padding: 8px 12px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.chat-opt {
+  background: hsl(225, 24%, 27%);
+  color: hsl(196, 84%, 63%);
+  border: 1px solid hsl(196, 84%, 63%);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: .8rem;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.chat-opt:hover {
+  background: hsl(196, 84%, 63%);
+  color: #fff;
+}
