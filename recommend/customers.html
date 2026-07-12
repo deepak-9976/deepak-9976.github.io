@@ -5,9 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Customers - BlockBuild</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Customer-specific styles */
+    .empty-state {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      color: #9ca3af;
+      font-size: .9rem;
+    }
+
+    tbody tr {
+      cursor: pointer;
+      transition: background .12s;
+    }
+    tbody tr:hover {
+      background: #f5f3ff;
+    }
+
+    /* Modal backdrop */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.35);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-backdrop.open { display: flex; }
+
+    .modal {
+      background: #fff;
+      border-radius: 14px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.16);
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal h3 { color: #1e1b4b; margin-bottom: 1.2rem; font-size: 1.1rem; }
+    .modal .close-btn {
+      position: absolute;
+      top: 1rem; right: 1.2rem;
+      background: none; border: none;
+      font-size: 1.4rem; color: #9ca3af;
+      cursor: pointer; line-height: 1;
+    }
+    .modal .close-btn:hover { color: #374151; }
+    .modal label { display: block; font-size: .82rem; font-weight: 600; margin: .7rem 0 .25rem; color: #374151; }
+    .modal input {
+      width: 100%;
+      padding: .55rem .8rem;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: .9rem;
+    }
+    .modal input:focus { outline: 2px solid #4f46e5; outline-offset: 1px; }
+    .modal .modal-actions { display: flex; gap: .8rem; justify-content: flex-end; margin-top: 1.5rem; }
+
+    .detail-row { display: flex; gap: .5rem; margin-bottom: .5rem; font-size: .9rem; }
+    .detail-row dt { font-weight: 600; color: #374151; min-width: 80px; }
+    .detail-row dd { color: #6b7280; }
+  </style>
 </head>
 <body class="app-layout">
-  <nav class="sidebar">
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+  <nav class="sidebar" id="sidebar">
     <div class="logo">BlockBuild</div>
     <ul>
       <li><a href="dashboard.html">Dashboard</a></li>
@@ -17,34 +86,279 @@
       <li><a href="search.html">Search</a></li>
       <li><a href="stripe.html">Subscription</a></li>
       <li><a href="metamask.html">Blockchain</a></li>
+      <li><a href="workflow.html">Workflow</a></li>
     </ul>
-    <a href="index.html" class="btn btn-secondary logout">Log Out</a>
+    <a href="../index.html" class="btn btn-secondary logout">← Portfolio</a>
   </nav>
   <main class="content">
     <div class="page-header">
       <h2>Customers</h2>
-      <button class="btn btn-primary">+ Add Customer</button>
+      <button class="btn btn-primary" id="add-customer-btn">+ Add Customer</button>
     </div>
-    <input type="text" placeholder="Filter customers..." class="filter-input">
-    <table>
+    <input type="text" id="customer-filter" placeholder="Filter customers..." class="filter-input" aria-label="Filter customers">
+    <table id="customers-table">
       <thead>
         <tr><th>Name</th><th>Email</th><th>Phone</th><th>City</th><th>Actions</th></tr>
       </thead>
-      <tbody>
-        <tr>
+      <tbody id="customers-tbody">
+        <tr data-name="Alice Johnson" data-email="alice@example.com" data-phone="555-0101" data-city="New York">
           <td>Alice Johnson</td><td>alice@example.com</td><td>555-0101</td><td>New York</td>
-          <td class="actions"><a href="#">View</a> <a href="#">Edit</a> <a href="#" class="danger">Delete</a></td>
+          <td class="actions">
+            <a href="#" data-action="view">View</a>
+            <a href="#" data-action="edit">Edit</a>
+            <a href="#" class="danger" data-action="delete">Delete</a>
+          </td>
         </tr>
-        <tr>
+        <tr data-name="Bob Martinez" data-email="bob@example.com" data-phone="555-0102" data-city="Chicago">
           <td>Bob Martinez</td><td>bob@example.com</td><td>555-0102</td><td>Chicago</td>
-          <td class="actions"><a href="#">View</a> <a href="#">Edit</a> <a href="#" class="danger">Delete</a></td>
+          <td class="actions">
+            <a href="#" data-action="view">View</a>
+            <a href="#" data-action="edit">Edit</a>
+            <a href="#" class="danger" data-action="delete">Delete</a>
+          </td>
         </tr>
-        <tr>
+        <tr data-name="Carol Smith" data-email="carol@example.com" data-phone="555-0103" data-city="Austin">
           <td>Carol Smith</td><td>carol@example.com</td><td>555-0103</td><td>Austin</td>
-          <td class="actions"><a href="#">View</a> <a href="#">Edit</a> <a href="#" class="danger">Delete</a></td>
+          <td class="actions">
+            <a href="#" data-action="view">View</a>
+            <a href="#" data-action="edit">Edit</a>
+            <a href="#" class="danger" data-action="delete">Delete</a>
+          </td>
         </tr>
       </tbody>
     </table>
+    <p class="empty-state" id="empty-state">No customers match your filter.</p>
   </main>
+
+  <!-- View/Edit Modal -->
+  <div class="modal-backdrop" id="customer-modal" role="dialog" aria-modal="true" aria-labelledby="customer-modal-title">
+    <div class="modal">
+      <button class="close-btn" id="customer-modal-close" aria-label="Close">&times;</button>
+      <h3 id="customer-modal-title">Customer Details</h3>
+      <div id="customer-modal-content"></div>
+      <div class="modal-actions" id="customer-modal-actions"></div>
+    </div>
+  </div>
+
+  <!-- Add Customer Modal -->
+  <div class="modal-backdrop" id="add-modal" role="dialog" aria-modal="true" aria-labelledby="add-modal-title">
+    <div class="modal">
+      <button class="close-btn" id="add-modal-close" aria-label="Close">&times;</button>
+      <h3 id="add-modal-title">Add Customer</h3>
+      <form id="add-customer-form" novalidate>
+        <label for="add-name">Full Name</label>
+        <input type="text" id="add-name" placeholder="e.g. Jane Doe" required>
+
+        <label for="add-email">Email</label>
+        <input type="email" id="add-email" placeholder="e.g. jane@example.com" required>
+
+        <label for="add-phone">Phone</label>
+        <input type="tel" id="add-phone" placeholder="e.g. 555-0100">
+
+        <label for="add-city">City</label>
+        <input type="text" id="add-city" placeholder="e.g. London">
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="add-cancel">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add Customer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // ── Mobile menu toggle ────────────────────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('sidebar-backdrop');
+
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        sidebar.classList.toggle('open');
+        backdrop.classList.toggle('open');
+      });
+
+      backdrop.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('open');
+      });
+    }
+
+    // ── Filter ────────────────────────────────────────────────────────────────
+    const filterInput = document.getElementById('customer-filter');
+    const tbody = document.getElementById('customers-tbody');
+    const emptyState = document.getElementById('empty-state');
+
+    function applyFilter() {
+      const query = filterInput.value.trim().toLowerCase();
+      const rows = tbody.querySelectorAll('tr');
+      let visible = 0;
+
+      rows.forEach(row => {
+        const name = row.dataset.name.toLowerCase();
+        const email = row.dataset.email.toLowerCase();
+        const city = row.dataset.city.toLowerCase();
+        const match = !query || name.includes(query) || email.includes(query) || city.includes(query);
+        row.style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+
+      emptyState.style.display = visible === 0 ? 'block' : 'none';
+    }
+
+    filterInput.addEventListener('input', applyFilter);
+
+    // ── Action routing ────────────────────────────────────────────────────────
+    let currentRow = null;
+
+    tbody.addEventListener('click', e => {
+      const link = e.target.closest('a[data-action]');
+      if (!link) return;
+      e.preventDefault();
+      const action = link.dataset.action;
+      currentRow = link.closest('tr');
+
+      if (action === 'view') showViewModal(currentRow);
+      else if (action === 'edit') showEditModal(currentRow);
+      else if (action === 'delete') confirmDelete(currentRow);
+    });
+
+    // ── View Modal ────────────────────────────────────────────────────────────
+    function showViewModal(row) {
+      const modal = document.getElementById('customer-modal');
+      const title = document.getElementById('customer-modal-title');
+      const content = document.getElementById('customer-modal-content');
+      const actions = document.getElementById('customer-modal-actions');
+
+      title.textContent = 'Customer Details';
+      content.innerHTML = `
+        <div class="detail-row"><dt>Name</dt><dd>${row.dataset.name}</dd></div>
+        <div class="detail-row"><dt>Email</dt><dd>${row.dataset.email}</dd></div>
+        <div class="detail-row"><dt>Phone</dt><dd>${row.dataset.phone}</dd></div>
+        <div class="detail-row"><dt>City</dt><dd>${row.dataset.city}</dd></div>
+      `;
+      actions.innerHTML = '<button class="btn btn-secondary" id="view-close">Close</button>';
+      modal.classList.add('open');
+
+      document.getElementById('view-close').addEventListener('click', () => modal.classList.remove('open'));
+    }
+
+    // ── Edit Modal ────────────────────────────────────────────────────────────
+    function showEditModal(row) {
+      const modal = document.getElementById('customer-modal');
+      const title = document.getElementById('customer-modal-title');
+      const content = document.getElementById('customer-modal-content');
+      const actions = document.getElementById('customer-modal-actions');
+
+      title.textContent = 'Edit Customer';
+      content.innerHTML = `
+        <label for="edit-name">Full Name</label>
+        <input type="text" id="edit-name" value="${row.dataset.name}">
+        <label for="edit-email">Email</label>
+        <input type="email" id="edit-email" value="${row.dataset.email}">
+        <label for="edit-phone">Phone</label>
+        <input type="tel" id="edit-phone" value="${row.dataset.phone}">
+        <label for="edit-city">City</label>
+        <input type="text" id="edit-city" value="${row.dataset.city}">
+      `;
+      actions.innerHTML = `
+        <button class="btn btn-secondary" id="edit-cancel">Cancel</button>
+        <button class="btn btn-primary" id="edit-save">Save</button>
+      `;
+      modal.classList.add('open');
+
+      document.getElementById('edit-cancel').addEventListener('click', () => modal.classList.remove('open'));
+      document.getElementById('edit-save').addEventListener('click', () => {
+        const name = document.getElementById('edit-name').value.trim();
+        const email = document.getElementById('edit-email').value.trim();
+        const phone = document.getElementById('edit-phone').value.trim();
+        const city = document.getElementById('edit-city').value.trim();
+
+        if (!name || !email) return;
+
+        row.dataset.name = name;
+        row.dataset.email = email;
+        row.dataset.phone = phone;
+        row.dataset.city = city;
+
+        row.children[0].textContent = name;
+        row.children[1].textContent = email;
+        row.children[2].textContent = phone;
+        row.children[3].textContent = city;
+
+        modal.classList.remove('open');
+      });
+    }
+
+    // ── Delete Confirmation ───────────────────────────────────────────────────
+    function confirmDelete(row) {
+      if (confirm(`Delete customer "${row.dataset.name}"? This cannot be undone.`)) {
+        row.remove();
+        applyFilter();
+      }
+    }
+
+    // ── Add Customer Modal ────────────────────────────────────────────────────
+    const addBtn = document.getElementById('add-customer-btn');
+    const addModal = document.getElementById('add-modal');
+    const addForm = document.getElementById('add-customer-form');
+
+    addBtn.addEventListener('click', () => {
+      addForm.reset();
+      addModal.classList.add('open');
+      document.getElementById('add-name').focus();
+    });
+
+    document.getElementById('add-modal-close').addEventListener('click', () => addModal.classList.remove('open'));
+    document.getElementById('add-cancel').addEventListener('click', () => addModal.classList.remove('open'));
+    addModal.addEventListener('click', e => {
+      if (e.target === e.currentTarget) addModal.classList.remove('open');
+    });
+
+    addForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = document.getElementById('add-name').value.trim();
+      const email = document.getElementById('add-email').value.trim();
+      const phone = document.getElementById('add-phone').value.trim();
+      const city = document.getElementById('add-city').value.trim();
+
+      if (!name || !email) return;
+
+      const tr = document.createElement('tr');
+      tr.dataset.name = name;
+      tr.dataset.email = email;
+      tr.dataset.phone = phone;
+      tr.dataset.city = city;
+      tr.innerHTML = `
+        <td>${name}</td><td>${email}</td><td>${phone}</td><td>${city}</td>
+        <td class="actions">
+          <a href="#" data-action="view">View</a>
+          <a href="#" data-action="edit">Edit</a>
+          <a href="#" class="danger" data-action="delete">Delete</a>
+        </td>
+      `;
+
+      tbody.prepend(tr);
+      addModal.classList.remove('open');
+      applyFilter();
+    });
+
+    // ── Close modals with Escape ─────────────────────────────────────────────
+    document.getElementById('customer-modal-close').addEventListener('click', () => {
+      document.getElementById('customer-modal').classList.remove('open');
+    });
+    document.getElementById('customer-modal').addEventListener('click', e => {
+      if (e.target === e.currentTarget) document.getElementById('customer-modal').classList.remove('open');
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.getElementById('customer-modal').classList.remove('open');
+        addModal.classList.remove('open');
+      }
+    });
+  </script>
 </body>
 </html>

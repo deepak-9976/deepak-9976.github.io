@@ -161,3 +161,188 @@ footer { margin-top: 2rem; color: #9ca3af; font-size: .85rem; }
 
 /* ── Btn group ── */
 .btn-group { display: flex; gap: 1rem; justify-content: center; }
+
+/* ── Mobile & Responsive ────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  /* Sidebar becomes hamburger-controlled overlay */
+  body.app-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100vh;
+    z-index: 999;
+    transition: left .3s ease;
+    box-shadow: 4px 0 12px rgba(0,0,0,.15);
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  /* Hamburger toggle button */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1000;
+    background: #4f46e5;
+    border: none;
+    border-radius: 8px;
+    padding: .6rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hamburger span {
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    transition: transform .2s, opacity .2s;
+  }
+
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translateY(6px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translateY(-6px); }
+
+  /* Overlay backdrop */
+  .sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.4);
+    z-index: 998;
+  }
+
+  .sidebar-backdrop.open {
+    display: block;
+  }
+
+  /* Content takes full width */
+  .content {
+    width: 100%;
+    padding: 4rem 1rem 1rem;
+  }
+
+  /* Stats grid responsive */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Product grid single column on small screens */
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Calculator grid single column */
+  .calc-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Plan grid single column */
+  .plan-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Tables become horizontally scrollable */
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* Page header stacks */
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .8rem;
+  }
+
+  .page-header .filter-input {
+    width: 100%;
+    max-width: none;
+  }
+
+  /* Filter bar stacks */
+  .filter-bar {
+    flex-direction: column;
+  }
+
+  .filter-bar .filter-input,
+  .filter-bar select {
+    width: 100%;
+  }
+
+  /* Search bar stacks */
+  .search-bar {
+    flex-direction: column;
+  }
+
+  .search-bar .filter-input {
+    width: 100%;
+  }
+
+  /* Hero padding adjustment */
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  /* Auth card full width on mobile */
+  .card {
+    padding: 1.5rem;
+    max-width: none;
+    margin: 0 1rem;
+  }
+
+  /* Modal full width with padding */
+  .modal {
+    margin: 0 1rem;
+    max-width: calc(100vw - 2rem);
+  }
+
+  /* Wallet status wraps */
+  .wallet-status {
+    flex-wrap: wrap;
+  }
+
+  /* Op grid single column */
+  .op-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Ultra-small screens */
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .content h2 {
+    font-size: 1.3rem;
+  }
+
+  .btn {
+    padding: .5rem 1rem;
+    font-size: .85rem;
+  }
+
+  th, td {
+    padding: .5rem .7rem;
+    font-size: .8rem;
+  }
+}
