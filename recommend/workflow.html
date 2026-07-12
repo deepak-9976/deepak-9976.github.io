@@ -234,6 +234,12 @@
 <header>
   <div class="logo-mark"></div>
   <h1>Flow Diagram</h1>
+  <div style="margin-left: auto; display: flex; gap: 1rem; align-items: center;">
+    <div class="page-visit-counter" style="background: #2a3544; color: #e0e0e0; border-color: #3a4554;">
+      👁️ Visits: <strong id="visit-count" style="color: #4caf8a;">0</strong>
+    </div>
+    <a href="dashboard.html" style="color: #4caf8a; text-decoration: none; font-size: 0.9rem; padding: 0.4rem 0.8rem; background: #2a3544; border-radius: 8px;">← Back to App</a>
+  </div>
 </header>
 
 <div class="layout">
@@ -344,4 +350,15 @@
 </div>
 
 </body>
+<script>
+  // Page visit tracking
+  (function() {
+    const VISIT_KEY = 'blockbuild_visits';
+    let visits = parseInt(localStorage.getItem(VISIT_KEY) || '0', 10);
+    visits++;
+    localStorage.setItem(VISIT_KEY, visits);
+    const counter = document.getElementById('visit-count');
+    if (counter) counter.textContent = visits;
+  })();
+</script>
 </html>

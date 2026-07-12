@@ -346,3 +346,37 @@ footer { margin-top: 2rem; color: #9ca3af; font-size: .85rem; }
     font-size: .8rem;
   }
 }
+
+/* ── Page Visit Counter ────────────────────────────────────────────────── */
+.page-visit-counter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  color: #6b7280;
+  border: 1px solid #e5e7eb;
+}
+
+.page-visit-counter strong {
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+/* Position in sidebar */
+.sidebar .page-visit-counter {
+  margin-top: auto;
+  margin-bottom: 1rem;
+  text-align: center;
+  justify-content: center;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .sidebar .page-visit-counter {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+  }
+}

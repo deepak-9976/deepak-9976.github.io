@@ -23,6 +23,9 @@
       <li><a href="metamask.html">Blockchain</a></li>
       <li><a href="workflow.html">Workflow</a></li>
     </ul>
+    <div class="page-visit-counter">
+      👁️ Visits: <strong id="visit-count">0</strong>
+    </div>
     <a href="../index.html" class="btn btn-secondary logout">← Portfolio</a>
   </nav>
   <main class="content">
@@ -43,6 +46,16 @@
 </body>
 </html>
   <script>
+    // Page visit tracking
+    (function() {
+      const VISIT_KEY = 'blockbuild_visits';
+      let visits = parseInt(localStorage.getItem(VISIT_KEY) || '0', 10);
+      visits++;
+      localStorage.setItem(VISIT_KEY, visits);
+      const counter = document.getElementById('visit-count');
+      if (counter) counter.textContent = visits;
+    })();
+
     // Mobile menu toggle
     const hamburger = document.getElementById('hamburger');
     const sidebar = document.getElementById('sidebar');
